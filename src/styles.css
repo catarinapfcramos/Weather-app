@@ -1,0 +1,61 @@
+p {
+  color: rgb(43, 42, 42);
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+.container {
+  text-align: center;
+  background-image: linear-gradient(to top, #fff1eb 0%, #76a5bb 100%);
+  padding: 30px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+.search-button,
+.current-button {
+  background: #adcedd;
+  color: rgb(43, 42, 42);
+}
+
+.max-temp {
+  color: red;
+}
+.min-temp {
+  color: blue;
+}
+.main-weather-icon {
+  font-size: 100px;
+  padding: 10px;
+  color: rgb(83, 83, 83);
+}
+.week-day {
+  margin-bottom: 5px;
+}
+.other-weather-icons {
+  font-size: 30px;
+  color: rgb(83, 83, 83);
+  border: 1px solid rgb(83, 83, 83);
+  border-radius: 10%;
+  padding: 15px;
+  box-shadow: 1px 1px 4px #76a5bb;
+}
+.coder {
+  font-size: small;
+  margin-bottom: 0;
+}
+
+.currentCity,
+.currentTemperature {
+  color: rgb(43, 42, 42);
+  padding: 15px 5px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  font-size: 70px;
+}
+
+.units {
+  color: rgb(43, 42, 42);
+  position: relative;
+  top: -30px;
+}
