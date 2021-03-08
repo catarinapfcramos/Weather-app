@@ -28,7 +28,7 @@ function showWeather(response) {
   document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#currentCity").innerHTML = response.data.name;
-  document.querySelector("#description").innerHTML = response.data.weather[0].main;
+  document.querySelector("#description").innerHTML = response.data.weather[0].description;
  }
 
  function searchCity(city) {
