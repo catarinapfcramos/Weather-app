@@ -3,7 +3,7 @@ p {
   font-family: "Raleway", sans-serif;
   font-weight: bold;
 }
-.container {
+.weather-app {
   text-align: center;
   background-image: linear-gradient(to top, #fff1eb 0%, #76a5bb 100%);
   padding: 30px;
