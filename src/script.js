@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let weekDays = [
       "Sunday",
       "Monday",
@@ -21,7 +22,6 @@ function formatDate(date) {
 }
 
 function showWeather(response) {
-  console.log(response);
   document.querySelector("#currentTemperature").innerHTML = Math.round(response.data.main.temp);
   document.querySelector("#max-temp").innerHTML = Math.round(response.data.main.temp_max);
   document.querySelector("#min-temp").innerHTML = Math.round(response.data.main.temp_min);
@@ -29,6 +29,8 @@ function showWeather(response) {
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#description").innerHTML = response.data.weather[0].description;
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
  }
 
  function searchCity(city) {
@@ -69,9 +71,7 @@ function getCurrentPosition(event) {
   navigator.geolocation.getCurrentPosition(showPositionWeather)
 }
 
-let dateElement = document.querySelector("#date");
-let currentTime = new Date();
-dateElement.innerHTML = formatDate(currentTime);
+
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);

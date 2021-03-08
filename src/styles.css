@@ -2,8 +2,11 @@ p {
   color: rgb(43, 42, 42);
   font-family: "Raleway", sans-serif;
   font-weight: bold;
+}
+.description {
   text-transform: capitalize;
 }
+
 .weather-app {
   text-align: center;
   background-image: linear-gradient(to top, #fff1eb 0%, #76a5bb 100%);
