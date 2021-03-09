@@ -21,7 +21,6 @@ p {
   background: #adcedd;
   color: rgb(43, 42, 42);
 }
-
 .max-temp {
   color: red;
 }
@@ -57,4 +56,13 @@ p {
   color: rgb(43, 42, 42);
   position: relative;
   top: -30px;
+}
+
+.weather-temperature .active {
+  color: rgb(43, 42, 42);
+  cursor: default;
+  text-decoration: none;
+}
+.weather-temperature .active:hover {
+  text-decoration: none;
 }
