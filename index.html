@@ -23,7 +23,7 @@
         <form id="search-form">
             <div class="row g-3 align-items-center">
                 <div class="col-8">
-                    <input type="text" class="form-control search-bar" placeholder="Search city..." id="search-bar"
+                    <input type="search" class="form-control search-bar" placeholder="Search city..." id="search-bar"
                         autocomplete="off" autofocus="on">
                 </div>
                 <div class="col-2">
@@ -39,11 +39,11 @@
         </div>
         <p class="description" id="description"></p>
         <img src="#" alt="weather icon" class="main-icon" id="main-icon" />
-        <div>
+        <div class="weather-temperature">
             <span class="currentTemperature" id="currentTemperature"></span>
             <span class="units">
-                <a href="#" id="degrees">°C</a> |
-                <a href="#" id="fahrenheit">°F</a>
+                <a href="#" id="celsius" class="active">°C</a> |
+                <a href="#" id="fahrenheit" class="inactive">°F</a>
             </span>
         </div>
 
