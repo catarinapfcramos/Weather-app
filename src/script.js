@@ -29,6 +29,8 @@ function showWeather(response) {
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#description").innerHTML = response.data.weather[0].description;
+  document.querySelector("#main-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#main-icon").setAttribute("alt", response.data.weather[0].description);
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
  }

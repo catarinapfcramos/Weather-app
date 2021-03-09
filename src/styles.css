@@ -28,11 +28,6 @@ p {
 .min-temp {
   color: blue;
 }
-.main-weather-icon {
-  font-size: 100px;
-  padding: 10px;
-  color: rgb(83, 83, 83);
-}
 .week-day {
   margin-bottom: 5px;
 }
