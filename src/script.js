@@ -23,9 +23,11 @@ function formatDate(timestamp) {
 
 function showWeather(response) {
   celsiusTemperature = response.data.main.temp;
+  maximumCelsiusTemperature = response.data.main.temp_max;
+  minimumCelsiusTemperature = response.data.main.temp_min;
   document.querySelector("#currentTemperature").innerHTML = Math.round(celsiusTemperature);
-  document.querySelector("#max-temp").innerHTML = Math.round(response.data.main.temp_max);
-  document.querySelector("#min-temp").innerHTML = Math.round(response.data.main.temp_min);
+  document.querySelector("#max-temp").innerHTML = Math.round(maximumCelsiusTemperature);
+  document.querySelector("#min-temp").innerHTML = Math.round(minimumCelsiusTemperature);
   document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#currentCity").innerHTML = response.data.name;
@@ -56,14 +58,19 @@ function changeToCelsius (event) {
   currentTemperature.innerHTML = Math.round(celsiusTemperature);
   fahrenheitLink.setAttribute("class", "inactive");
   celsiusLink.setAttribute("class", "active");
+  document.querySelector("#max-temp").innerHTML = Math.round(maximumCelsiusTemperature);
+  document.querySelector("#min-temp").innerHTML = Math.round(minimumCelsiusTemperature);
 }
 function changeToFahrenheit (event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#currentTemperature");
   let fahrenheitTemperature = celsiusTemperature * 9 / 5 + 32;
   currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+  document.querySelector("#max-temp").innerHTML = Math.round(maximumCelsiusTemperature * 9 / 5 + 32);
+  document.querySelector("#min-temp").innerHTML = Math.round(minimumCelsiusTemperature * 9 / 5 + 32);
   fahrenheitLink.setAttribute("class", "active");
   celsiusLink.setAttribute("class", "inactive");
+
 }
 
 function showPositionWeather(position) {
@@ -81,6 +88,8 @@ function getCurrentPosition(event) {
 }
 
 let celsiusTemperature = null;
+let maximumCelsiusTemperature = null;
+let minimumCelsiusTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
