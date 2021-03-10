@@ -31,11 +31,11 @@ p {
   margin-bottom: 5px;
 }
 .other-weather-icons {
-  font-size: 30px;
-  color: rgb(83, 83, 83);
+  display: block;
+  width: 100%;
   border: 1px solid rgb(83, 83, 83);
   border-radius: 10%;
-  padding: 15px;
+  padding: 0;
   box-shadow: 1px 1px 4px #76a5bb;
 }
 .coder {
