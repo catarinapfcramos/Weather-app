@@ -58,9 +58,9 @@ function showWeather(response) {
     <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" class="other-weather-icons" />
     <div class="forecast-temperature">
     <p>
-    <span class="maximum-temp"> ${Math.round(forecast.main.temp_max)}°</span>
+    <span class="forecast-max"> ${Math.round(forecast.main.temp_max)}</span>°
     /
-    <span class="minimum-temp">${Math.round(forecast.main.temp_min)}°</span>
+    <span class="forecast-min">${Math.round(forecast.main.temp_min)}</span>°
     </p>
     </div>
     </div>`;
@@ -87,10 +87,22 @@ function changeToCelsius (event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#currentTemperature");
   currentTemperature.innerHTML = Math.round(celsiusTemperature);
-  fahrenheitLink.setAttribute("class", "inactive");
-  celsiusLink.setAttribute("class", "active");
   document.querySelector("#max-temp").innerHTML = Math.round(maximumCelsiusTemperature);
   document.querySelector("#min-temp").innerHTML = Math.round(minimumCelsiusTemperature);
+  fahrenheitLink.setAttribute("class", "inactive");
+  celsiusLink.setAttribute("class", "active");
+  
+  forecastMax = document.querySelectorAll(".forecast-max");
+  for (let index = 0; index < 6; index++) {
+    forecastMax[index].innerHTML = Math.round((forecastMax[index].innerHTML -32 )* 5/9); 
+    }
+  forecastMin = document.querySelectorAll(".forecast-min");
+  for (let index = 0; index < 6; index++) {
+    forecastMin[index].innerHTML = Math.round((forecastMin[index].innerHTML -32) * 5/9); 
+    }
+  celsiusLink.removeEventListener("click", changeToCelsius);
+  fahrenheitLink.addEventListener("click", changeToFahrenheit);
+ 
 }
 function changeToFahrenheit (event) {
   event.preventDefault();
@@ -101,8 +113,17 @@ function changeToFahrenheit (event) {
   document.querySelector("#min-temp").innerHTML = Math.round(minimumCelsiusTemperature * 9 / 5 + 32);
   fahrenheitLink.setAttribute("class", "active");
   celsiusLink.setAttribute("class", "inactive");
-
-}
+  forecastMax = document.querySelectorAll(".forecast-max");
+  for (let index = 0; index < 6; index++) {
+    forecastMax[index].innerHTML = Math.round(forecastMax[index].innerHTML * 9/5 + 32); 
+    }
+  forecastMin = document.querySelectorAll(".forecast-min");
+  for (let index = 0; index < 6; index++) {
+    forecastMin[index].innerHTML = Math.round(forecastMin[index].innerHTML * 9/5 + 32); 
+    }
+  fahrenheitLink.removeEventListener("click", changeToFahrenheit);
+  celsiusLink.addEventListener("click", changeToCelsius);
+  }
 
 function showPositionWeather(position) {
   let latitude = position.coords.latitude;
@@ -111,6 +132,8 @@ function showPositionWeather(position) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(`${apiUrl}`).then(showWeather);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getCurrentPosition(event) {
@@ -121,6 +144,8 @@ function getCurrentPosition(event) {
 let celsiusTemperature = null;
 let maximumCelsiusTemperature = null;
 let minimumCelsiusTemperature = null;
+let forecastMax = null;
+let forecastMin = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
@@ -132,4 +157,5 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", changeToCelsius);
+
 searchCity("Porto");
