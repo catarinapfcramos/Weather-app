@@ -21,7 +21,7 @@ function showWeather(response) {
   document.querySelector("#max-temp").innerHTML = Math.round(maximumCelsiusTemperature);
   document.querySelector("#min-temp").innerHTML = Math.round(minimumCelsiusTemperature);
   document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
-  document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed);
+  document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed * 3.6);
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#description").innerHTML = response.data.weather[0].description;
   document.querySelector("#main-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
